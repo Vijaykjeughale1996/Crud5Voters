@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>SHOW ALL DATA</title>
+{% endblock %}
+
+{% block content %}
+<table class="table table-dark table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>FIRST NAME</th>
+        <th>LAST NAME</th>
+        <th>DOB</th>
+        <th>AGE</th>
+        <th>ADDRESS</th>
+        <th class="pl-5">ACTION</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in data %}
+    <tr>
+    <td>{{i.ide}}</td>
+    <td>{{i.fname}}</td>
+    <td>{{i.lname}}</td>
+    <td>{{i.dob}}</td>
+    <td>{{i.age}}</td>
+    <td>{{i.add}}</td>
+    <td>
+        <button class="btn btn-outline-warning mr-3"><a href="{% url 'upd_url' i.ide %}">UPDATE</a></button>
+        <button class="btn btn-outline-danger"><a href="{% url 'del_url' i.ide %}">DELETE</a></button>
+    </td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+{% endblock %}
